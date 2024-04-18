@@ -10350,3 +10350,217 @@ Migrating to AddPasswordDigestToUsers (20240418103517)
   [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "user01@teste.com"], ["id", 4], ["LIMIT", 1]]
   [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "password_digest" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2024-04-18 10:42:23.303884"], ["password_digest", "[FILTERED]"], ["id", 4]]
   [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/signup" for ::1 at 2024-04-18 12:47:34 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_erros.html.erb (Duration: 0.5ms | Allocations: 204)
+  Rendered users/_form.html.erb (Duration: 12.5ms | Allocations: 8424)
+  Rendered users/new.html.erb within layouts/application (Duration: 14.0ms | Allocations: 8812)
+  Rendered layouts/_messages.html.erb (Duration: 1.9ms | Allocations: 178)
+  Rendered layout layouts/application.html.erb (Duration: 77.9ms | Allocations: 26625)
+Completed 200 OK in 166ms (Views: 83.5ms | ActiveRecord: 2.0ms | Allocations: 131548)
+
+
+Started POST "/users/new" for ::1 at 2024-04-18 12:47:42 +0100
+  
+ActionController::RoutingError (No route matches [POST] "/users/new"):
+  
+Started GET "/signup" for ::1 at 2024-04-18 12:47:53 +0100
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_erros.html.erb (Duration: 0.1ms | Allocations: 14)
+  Rendered users/_form.html.erb (Duration: 5.8ms | Allocations: 3765)
+  Rendered users/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 3824)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 4940)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 5310)
+
+
+Started GET "/signup" for ::1 at 2024-04-18 12:52:55 +0100
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_erros.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered users/_form.html.erb (Duration: 4.8ms | Allocations: 3637)
+  Rendered users/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 3696)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 4697)
+Completed 200 OK in 14ms (Views: 9.5ms | ActiveRecord: 0.0ms | Allocations: 5008)
+
+
+Started GET "/signup" for ::1 at 2024-04-18 12:54:13 +0100
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_erros.html.erb (Duration: 0.5ms | Allocations: 187)
+  Rendered users/_form.html.erb (Duration: 3.5ms | Allocations: 1645)
+  Rendered users/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1909)
+  Rendered layouts/_messages.html.erb (Duration: 0.4ms | Allocations: 160)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 3498)
+Completed 200 OK in 34ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 9841)
+
+
+Started POST "/users" for ::1 at 2024-04-18 12:54:21 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"testeee", "email"=>"teste@tttee.com", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "testeee"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "teste@tttee.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "email", "password_digest") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "testeee"], ["created_at", "2024-04-18 11:54:22.186282"], ["updated_at", "2024-04-18 11:54:22.186282"], ["email", "teste@tttee.com"], ["password_digest", "[FILTERED]"]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:9:in `create'
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 298ms (ActiveRecord: 4.8ms | Allocations: 10387)
+
+
+Started GET "/articles" for ::1 at 2024-04-18 12:54:22 +0100
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 31.0ms | Allocations: 46169)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 33)
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 47331)
+Completed 200 OK in 41ms (Views: 33.9ms | ActiveRecord: 0.8ms | Allocations: 50554)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/signup" for ::1 at 2024-04-18 12:56:07 +0100
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_erros.html.erb (Duration: 0.6ms | Allocations: 187)
+  Rendered users/_form.html.erb (Duration: 8.4ms | Allocations: 1540)
+  Rendered users/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 1800)
+  Rendered layouts/_messages.html.erb (Duration: 0.6ms | Allocations: 160)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 3382)
+Completed 200 OK in 44ms (Views: 18.5ms | ActiveRecord: 2.7ms | Allocations: 10408)
+
+
+Started POST "/users" for ::1 at 2024-04-18 12:56:15 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"testeeee", "email"=>"teste@jihds.com", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "testeeee"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "teste@jihds.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "email", "password_digest") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["username", "testeeee"], ["created_at", "2024-04-18 11:56:15.560641"], ["updated_at", "2024-04-18 11:56:15.560641"], ["email", "teste@jihds.com"], ["password_digest", "[FILTERED]"]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:9:in `create'
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 264ms (ActiveRecord: 2.3ms | Allocations: 5039)
+
+
+Started GET "/articles" for ::1 at 2024-04-18 12:56:15 +0100
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 11.8ms | Allocations: 6792)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 7918)
+Completed 200 OK in 20ms (Views: 14.7ms | ActiveRecord: 0.7ms | Allocations: 10484)
+
+
+Started GET "/articles" for ::1 at 2024-04-18 12:56:55 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:14
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/articles/index.html.erb:21
+  Rendered articles/index.html.erb within layouts/application (Duration: 94.6ms | Allocations: 139355)
+  Rendered layouts/_messages.html.erb (Duration: 0.6ms | Allocations: 186)
+  Rendered layout layouts/application.html.erb (Duration: 226.7ms | Allocations: 157203)
+Completed 200 OK in 278ms (Views: 228.9ms | ActiveRecord: 2.6ms | Allocations: 177953)
+
+
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/articles/new" for ::1 at 2024-04-18 13:01:56 +0100
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered shared/_erros.html.erb (Duration: 0.7ms | Allocations: 211)
+  Rendered articles/_form.html.erb (Duration: 8.5ms | Allocations: 2457)
+  Rendered articles/new.html.erb within layouts/application (Duration: 9.8ms | Allocations: 2797)
+  Rendered layouts/_messages.html.erb (Duration: 0.6ms | Allocations: 161)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 4464)
+Completed 200 OK in 35ms (Views: 17.6ms | ActiveRecord: 2.8ms | Allocations: 11448)
+
+
+Started POST "/articles" for ::1 at 2024-04-18 13:01:57 +0100
+Processing by ArticlesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"", "description"=>""}, "commit"=>"Create Article"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/articles_controller.rb:25:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered shared/_erros.html.erb (Duration: 2.2ms | Allocations: 1903)
+  Rendered articles/_form.html.erb (Duration: 6.5ms | Allocations: 4320)
+  Rendered articles/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 4414)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 5570)
+Completed 200 OK in 26ms (Views: 10.5ms | ActiveRecord: 2.0ms | Allocations: 11356)
+
+
+Started GET "/signup" for ::1 at 2024-04-18 13:02:01 +0100
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_erros.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered users/_form.html.erb (Duration: 5.0ms | Allocations: 1594)
+  Rendered users/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1858)
+  Rendered layouts/_messages.html.erb (Duration: 0.2ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 2997)
+Completed 200 OK in 19ms (Views: 12.6ms | ActiveRecord: 0.2ms | Allocations: 6447)
+
+
+Started POST "/users" for ::1 at 2024-04-18 13:02:03 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:9:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_erros.html.erb (Duration: 2.3ms | Allocations: 1784)
+  Rendered users/_form.html.erb (Duration: 9.0ms | Allocations: 4690)
+  Rendered users/new.html.erb within layouts/application (Duration: 9.5ms | Allocations: 4749)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 5795)
+Completed 200 OK in 29ms (Views: 12.4ms | ActiveRecord: 2.5ms | Allocations: 10665)
+
+
