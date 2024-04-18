@@ -10327,3 +10327,10 @@ Migrating to AddEmailToUsers (20240418083150)
   [1m[36mArticle Create (1.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "description", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "First article"], ["description", "This is my first article"], ["created_at", "2024-04-18 09:24:54.382837"], ["updated_at", "2024-04-18 09:24:54.382837"], ["user_id", 3]]
   [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."user_id" = ? /* loading for pp */ LIMIT ?[0m  [["user_id", 3], ["LIMIT", 11]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "User01"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "User01@teste.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "email") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["username", "User01"], ["created_at", "2024-04-18 09:54:53.986342"], ["updated_at", "2024-04-18 09:54:53.986342"], ["email", "user01@teste.com"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
