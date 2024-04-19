@@ -5,7 +5,8 @@
 <% @users.each do |user| %>
     <p><%= user.username %></p>
     <p><%= link_to 'View profile', user %></p>
-    <% if logged_in? && user == current_user %>
+    <% if logged_in? && (user == current_user || current_user.admin?) %>
         <p><%= link_to 'Edit', edit_user_path(user) %></p>
     <% end %>
+    
 <% end %>
