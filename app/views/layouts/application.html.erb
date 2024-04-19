@@ -25,6 +25,9 @@
         <ul style="list-style: none; text-decoration: none">
           <% if logged_in? %>
             <li>
+              <%= button_to 'Delete profile', user_path(current_user), method: :delete, onclick: "return confirm('Are you sure?')" %>
+            </li>
+            <li>
               <%= link_to current_user.username, user_path(current_user) %>
             </li>
             <li>
