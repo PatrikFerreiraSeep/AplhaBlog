@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  # just with the get method did it work
+  get 'logout', to: 'sessions#destroy'
 
 end
